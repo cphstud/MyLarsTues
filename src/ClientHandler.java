@@ -4,7 +4,7 @@ import java.net.Socket;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ClientHandler {
+public class ClientHandler implements Runnable{
     Socket client;
     PrintWriter pw;
     Scanner sc;
@@ -64,5 +64,16 @@ public class ClientHandler {
             sb.append(charData[i]);
         }
         return sb.toString();
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                this.protocol();
+            }
+        } catch (IOException ie) {
+            ie.printStackTrace();
+        }
     }
 }
