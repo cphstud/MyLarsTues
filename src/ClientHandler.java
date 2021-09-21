@@ -14,8 +14,19 @@ public class ClientHandler {
         this.sc = new Scanner(client.getInputStream());
     }
 
-    public void protocol() {
-        String msg = sc.nextLine();
+    public void protocol() throws IOException {
+        String msg="";
+        while(!msg.equals("CLOSE#")) {
+            msg = sc.nextLine();
+            //TODO: split strengen på #
+            //TODO: switche på første del og process anden del (data)
+            switch (action) {
+                case "UPPER":break;
+            }
+        }
+        client.close();
+
+
         pw.println(msg + " hej fra server");
     }
 }
