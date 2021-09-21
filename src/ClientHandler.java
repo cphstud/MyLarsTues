@@ -21,6 +21,7 @@ public class ClientHandler implements Runnable{
         this.sc = new Scanner(client.getInputStream());
         this.dkUk = dkUk;
     }
+    // TODO: lav ny konstruktør med den delte besked-kø
 
     public void protocol() throws IOException {
         String msg="";
@@ -35,6 +36,7 @@ public class ClientHandler implements Runnable{
                 dataString = msgArr[1];
             }
             switch (action) {
+                case "ALL":;break;//TODO:indsæt besked i delt ressource
                 case "UPPER":pw.println(dataString.toUpperCase());break;
                 case "LOWER":pw.println(dataString.toLowerCase());break;
                 case "REVERSE":pw.println(doReverse(dataString));break;
